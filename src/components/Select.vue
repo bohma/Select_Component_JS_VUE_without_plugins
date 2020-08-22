@@ -9,7 +9,7 @@
           type="text"
           v-model="selected"
           placeholder="Search"
-          @click="toggle = true ? true : toggle = !toggle"
+          @click="toggle = true ? true : toggle = !toggle;"
           v-on:keyup.down="arrowDown()"
           tabindex="0"
         />
@@ -22,8 +22,9 @@
       </div>
     </div>
 
-    <div class="select" v-show="toggle">
+    <div class="select">
       <select
+        v-show="toggle"
         id="select-id"
         class="select__item"
         v-model="selected1"
@@ -31,10 +32,11 @@
         :size="filteredMass.length> 12 ? 12 : filteredMass.length"
         tabindex="1"
       >
-        <option
+        <option 
+          id="optionId"
           v-for="item in filteredMass"
           v-bind:key="item.code"
-          @click="chooseItem();toggle = !toggle"
+          @click="chooseItem();toggle = !toggle;"
           class="select__option"
         >{{item.name}}</option>
       </select>
@@ -325,6 +327,10 @@ export default {
 </script>
 
 <style scoped>
+.main__wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+}
 .span {
   display: flex;
   justify-content: left;
